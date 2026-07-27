@@ -1,8 +1,0 @@
-{
-    "app_name": "NeelX",
-    "version": "1.0.0",
-    "theme": "dark",
-    "language": "en",
-    "developer_mode": false,
-    "log_level": "INFO"
-}
