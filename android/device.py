@@ -3,72 +3,83 @@
 Project : NeelX
 Module  : Android Device
 Author  : Nilesh Vishwakarma
-Version : 1.0.0
+Version : 2.0.0
 =========================================
 """
 
+import subprocess
+
 from android.adb import ADB
-from android.exceptions import DeviceNotFoundError
 
 
 class AndroidDevice:
 
-    def __init__(self):
-        self.connected = False
-
-    def connect(self) -> bool:
+    @staticmethod
+    def is_connected() -> bool:
         """
-        Check if an Android device is connected.
+        Check whether at least one Android device is connected.
         """
+        result = subprocess.run(
+            [str(ADB.ADB_PATH), "devices"],
+            capture_output=True,
+            text=True
+        )
 
-        output = ADB.devices()
-
-        lines = output.splitlines()
-
-        devices = []
+        lines = result.stdout.strip().splitlines()
 
         for line in lines[1:]:
+            if "\tdevice" in line:
+                return True
 
-            line = line.strip()
+        return False
 
-            if line and "\tdevice" in line:
-                devices.append(line)
+    @staticmethod
+    def connect():
 
-        if not devices:
-            raise DeviceNotFoundError(
-                "No Android device connected."
-            )
-
-        self.connected = True
+        if not AndroidDevice.is_connected():
+            raise RuntimeError("No Android device connected.")
 
         return True
 
-    def model(self) -> str:
+    @staticmethod
+    def shell(command: str):
 
-        return ADB.shell(
+        result = subprocess.run(
+            [
+                str(ADB.ADB_PATH),
+                "shell",
+                command
+            ],
+            capture_output=True,
+            text=True
+        )
+
+        return result.stdout.strip()
+
+    @staticmethod
+    def model():
+
+        return AndroidDevice.shell(
             "getprop ro.product.model"
         )
 
-    def brand(self) -> str:
+    @staticmethod
+    def brand():
 
-        return ADB.shell(
+        return AndroidDevice.shell(
             "getprop ro.product.brand"
         )
 
-    def android_version(self) -> str:
+    @staticmethod
+    def android_version():
 
-        return ADB.shell(
+        return AndroidDevice.shell(
             "getprop ro.build.version.release"
         )
 
-    def battery(self) -> str:
+    @staticmethod
+    def resolution():
 
-        return ADB.shell(
-            "dumpsys battery"
-        )
-
-    def screen_size(self) -> str:
-
-        return ADB.shell(
+        return AndroidDevice.shell(
             "wm size"
         )
