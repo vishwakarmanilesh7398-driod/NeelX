@@ -21,6 +21,10 @@ from core.services.registry import (
     AutomationService,
 )
 
+from core.plugins.manager import PluginManager
+from core.plugins.loader import PluginLoader
+from plugins.demo.demo_plugin import DemoPlugin
+
 
 class NeelEngine:
 
@@ -49,8 +53,14 @@ class NeelEngine:
         ServiceManager.register(VisionService())
         ServiceManager.register(AutomationService())
 
-        # Start All Services
+        # Start Services
         ServiceManager.start_all()
+
+        # Register Plugins
+        PluginManager.register(DemoPlugin())
+
+        # Load Plugins
+        PluginLoader.load_plugins()
 
         # Fire Startup Event
         EventBus.emit(
@@ -67,6 +77,8 @@ class NeelEngine:
 
     @classmethod
     def stop(cls):
+
+        PluginLoader.unload_plugins()
 
         ServiceManager.stop_all()
 
