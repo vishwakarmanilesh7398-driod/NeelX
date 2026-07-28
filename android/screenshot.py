@@ -3,13 +3,14 @@
 Project : NeelX
 Module  : Screenshot
 Author  : Nilesh Vishwakarma
-Version : 1.1.0
+Version : 1.2.0
 =========================================
 """
 
 from pathlib import Path
 from datetime import datetime
 import subprocess
+import shutil
 
 from android.adb import ADB
 
@@ -39,5 +40,13 @@ class Screenshot:
                 stdout=image,
                 check=True
             )
+
+        # Latest screenshot copy
+        latest = screenshot_dir / "latest.png"
+
+        shutil.copy2(
+            image_path,
+            latest
+        )
 
         return image_path
