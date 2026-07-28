@@ -20,3 +20,13 @@ logs/*.log
 Thumbs.db
 # Android Platform Tools
 tools/platform-tools/
+# Temporary files
+temp/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
