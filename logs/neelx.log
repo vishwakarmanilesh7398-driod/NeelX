@@ -94,3 +94,35 @@
 [2026-07-28 08:51:46] [SUCCESS] Plugins Loaded Successfully.
 [2026-07-28 08:51:46] [INFO] Event -> system_start
 [2026-07-28 08:51:46] [SUCCESS] NeelEngine Started Successfully.
+[2026-07-28 08:58:59] [INFO] Subscribed -> system_start
+[2026-07-28 08:58:59] [INFO] Settings loaded.
+[2026-07-28 08:58:59] [SYSTEM] NeelX Starting...
+[2026-07-28 08:58:59] [INFO] Initializing Core...
+[2026-07-28 08:58:59] [INFO] Dependency Registered -> NumPy
+[2026-07-28 08:58:59] [INFO] Dependency Registered -> OpenCV
+[2026-07-28 08:58:59] [INFO] Dependency Registered -> ADB
+[2026-07-28 08:58:59] [INFO] Dependency Registered -> Pillow
+[2026-07-28 08:58:59] [INFO] Dependency Registered -> Requests
+[2026-07-28 08:58:59] [INFO] Checking Dependencies...
+[2026-07-28 08:59:01] [SUCCESS] NumPy Installed
+[2026-07-28 08:59:01] [SUCCESS] OpenCV Installed
+[2026-07-28 08:59:01] [ERROR] ADB Missing
+[2026-07-28 08:59:01] [SUCCESS] Pillow Installed
+[2026-07-28 08:59:02] [SUCCESS] Requests Installed
+[2026-07-28 08:59:02] [INFO] Dependency Check Finished.
+[2026-07-28 08:59:02] [SUCCESS] Service Registered -> Android
+[2026-07-28 08:59:02] [SUCCESS] Service Registered -> Voice
+[2026-07-28 08:59:02] [SUCCESS] Service Registered -> Vision
+[2026-07-28 08:59:02] [SUCCESS] Service Registered -> Automation
+[2026-07-28 08:59:02] [ANDROID] Android Service Started
+[2026-07-28 08:59:02] [VOICE] Voice Service Started
+[2026-07-28 08:59:02] [VISION] Vision Service Started
+[2026-07-28 08:59:02] [AUTOMATION] Automation Service Started
+[2026-07-28 08:59:02] [INFO] All Services Started
+[2026-07-28 08:59:02] [SUCCESS] Plugin Registered -> DemoPlugin
+[2026-07-28 08:59:02] [INFO] Loading Plugins...
+[2026-07-28 08:59:02] [SUCCESS] Demo Plugin Loaded
+[2026-07-28 08:59:02] [INFO] All Plugins Loaded
+[2026-07-28 08:59:02] [SUCCESS] Plugins Loaded Successfully.
+[2026-07-28 08:59:02] [INFO] Event -> system_start
+[2026-07-28 08:59:02] [SUCCESS] NeelEngine Started Successfully.
