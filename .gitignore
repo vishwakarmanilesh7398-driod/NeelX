@@ -18,3 +18,5 @@ logs/*.log
 # OS Files
 .DS_Store
 Thumbs.db
+# Android Platform Tools
+tools/platform-tools/
