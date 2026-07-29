@@ -3,7 +3,7 @@
 Project : NeelX
 Module  : Public API
 Author  : Nilesh Vishwakarma
-Version : 1.0.0
+Version : 1.1.0
 =========================================
 """
 
@@ -17,11 +17,21 @@ class NeelX:
     @staticmethod
     def execute(text: str):
 
+        print(f"\n📝 Input : {text}")
+
         intent = NLP.understand(text)
+
+        print(f"🧠 Intent : {intent}")
 
         command = Command(
             action=intent.action,
             target=intent.target
         )
 
-        return CommandExecutor.execute(command)
+        print(f"⚙️ Command : {command}")
+
+        result = CommandExecutor.execute(command)
+
+        print("✅ Command Executed")
+
+        return result

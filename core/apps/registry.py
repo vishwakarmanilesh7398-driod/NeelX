@@ -3,33 +3,46 @@
 Project : NeelX
 Module  : App Registry
 Author  : Nilesh Vishwakarma
-Version : 1.0.0
+Version : 1.1.0
 =========================================
 """
 
-
 APPS = {
 
-    # System
+    # -------------------------
+    # Settings
+    # -------------------------
+
     "settings": "com.android.settings",
-    "camera": "com.oplus.camera",
-    "gallery": "com.coloros.gallery3d",
-    "calculator": "com.coloros.calculator",
-    "clock": "com.coloros.alarmclock",
+    "setting": "com.android.settings",
 
-    # Google
+    # -------------------------
+    # Chrome
+    # -------------------------
+
     "chrome": "com.android.chrome",
+    "browser": "com.android.chrome",
+    "google chrome": "com.android.chrome",
+
+    # -------------------------
+    # YouTube
+    # -------------------------
+
     "youtube": "com.google.android.youtube",
-    "gmail": "com.google.android.gm",
-    "maps": "com.google.android.apps.maps",
-    "photos": "com.google.android.apps.photos",
+    "yt": "com.google.android.youtube",
 
-    # Social
+    # -------------------------
+    # Instagram
+    # -------------------------
+
     "instagram": "com.instagram.android",
-    "facebook": "com.facebook.katana",
-    "whatsapp": "com.whatsapp",
-    "telegram": "org.telegram.messenger",
+    "insta": "com.instagram.android",
 
-    # Games
-    "free fire": "com.dts.freefiremax",
+    # -------------------------
+    # Free Fire
+    # -------------------------
+
+    "free fire": "com.dts.freefireth",
+    "freefire": "com.dts.freefireth",
+    "ff": "com.dts.freefireth",
 }

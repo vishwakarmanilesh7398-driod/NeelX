@@ -3,7 +3,7 @@
 Project : NeelX
 Module  : App Manager API
 Author  : Nilesh Vishwakarma
-Version : 1.0.0
+Version : 1.1.0
 =========================================
 """
 
@@ -19,11 +19,13 @@ class Apps:
         package = APPS.get(name.lower())
 
         if package is None:
-            raise ValueError(
-                f"Unknown app: {name}"
-            )
+            raise ValueError(f"Unknown app: {name}")
+
+        print(f"📦 Package : {package}")
 
         AppManager.open(package)
+
+        print("✅ AppManager.open() completed")
 
     @staticmethod
     def close(name: str):
@@ -31,8 +33,6 @@ class Apps:
         package = APPS.get(name.lower())
 
         if package is None:
-            raise ValueError(
-                f"Unknown app: {name}"
-            )
+            raise ValueError(f"Unknown app: {name}")
 
         AppManager.close(package)
