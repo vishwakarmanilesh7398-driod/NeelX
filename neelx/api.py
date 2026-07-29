@@ -7,9 +7,10 @@ Version : 1.1.0
 =========================================
 """
 
-from core.intent.nlp import NLP
-from core.commands.executor import CommandExecutor
+from core.intent.intent import Intent
 from core.commands.command import Command
+from core.commands.executor import CommandExecutor
+from core.intent.nlp import NLP
 
 
 class NeelX:
@@ -17,21 +18,16 @@ class NeelX:
     @staticmethod
     def execute(text: str):
 
-        print(f"\n📝 Input : {text}")
-
         intent = NLP.understand(text)
 
-        print(f"🧠 Intent : {intent}")
+        return NeelX.execute_intent(intent)
+
+    @staticmethod
+    def execute_intent(intent: Intent):
 
         command = Command(
             action=intent.action,
             target=intent.target
         )
 
-        print(f"⚙️ Command : {command}")
-
-        result = CommandExecutor.execute(command)
-
-        print("✅ Command Executed")
-
-        return result
+        return CommandExecutor.execute(command)

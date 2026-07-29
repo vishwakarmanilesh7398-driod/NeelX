@@ -46,6 +46,6 @@ class VoiceEngine:
         elif intent.action == "screenshot":
             Speaker.speak("Capturing Screenshot")
 
-        NeelX.execute(text)
+        NeelX.execute_intent(intent)
 
         Speaker.speak("Command Executed")
