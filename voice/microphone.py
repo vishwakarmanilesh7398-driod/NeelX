@@ -12,11 +12,14 @@ import speech_recognition as sr
 
 class Microphone:
 
-    @staticmethod
-    def create():
+    _recognizer = sr.Recognizer()
+    _microphone = sr.Microphone()
 
-        recognizer = sr.Recognizer()
+    @classmethod
+    def create(cls):
 
-        microphone = sr.Microphone()
+        cls._recognizer.pause_threshold = 0.8
+        cls._recognizer.energy_threshold = 300
+        cls._recognizer.dynamic_energy_threshold = True
 
-        return recognizer, microphone
+        return cls._recognizer, cls._microphone

@@ -12,12 +12,19 @@ import pyttsx3
 
 class Speaker:
 
-    _engine = pyttsx3.init()
-
-    @classmethod
-    def speak(cls, text: str):
+    @staticmethod
+    def speak(text: str):
 
         print(f"🤖 {text}")
 
-        cls._engine.say(text)
-        cls._engine.runAndWait()
+        engine = pyttsx3.init()
+
+        engine.setProperty("rate", 170)
+
+        engine.say(text)
+
+        engine.runAndWait()
+
+        engine.stop()
+
+        del engine

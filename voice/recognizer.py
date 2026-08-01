@@ -18,32 +18,37 @@ class VoiceRecognizer:
 
         recognizer, microphone = Microphone.create()
 
-        with microphone as source:
-
-            print("🎤 Listening...")
-
-            recognizer.adjust_for_ambient_noise(source, duration=1)
-
-            audio = recognizer.listen(source)
-
-        print("🧠 Recognizing...")
-
         try:
+
+            with microphone as source:
+
+                print("🎤 Listening...")
+
+                audio = recognizer.listen(
+                    source,
+                    timeout=5,
+                    phrase_time_limit=6
+                )
+
+            print("🧠 Recognizing...")
 
             text = recognizer.recognize_google(audio)
 
             print(f"You said: {text}")
 
-            return text
+            return text.lower().strip()
+
+        except sr.WaitTimeoutError:
+
+            print("⌛ Timeout")
+            return ""
 
         except sr.UnknownValueError:
 
-            print("❌ Could not understand audio")
-
+            print("❌ Could not understand")
             return ""
 
-        except sr.RequestError as e:
+        except Exception as e:
 
-            print(f"❌ Speech Recognition Error: {e}")
-
+            print(e)
             return ""

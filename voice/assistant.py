@@ -22,17 +22,28 @@ class Assistant:
 
         while True:
 
+            print("DEBUG: Waiting...")
+
             detected = WakeWord.detect()
+
+            print(f"DEBUG: detected = {detected}")
 
             if detected:
 
+                print("DEBUG: Wake Word Found")
+
                 Speaker.speak("Yes bro.")
 
+                print("DEBUG: Starting VoiceEngine")
+
                 try:
+
                     VoiceEngine.run()
+
+                    print("DEBUG: VoiceEngine Finished")
 
                 except Exception as error:
 
-                    print(f"❌ {error}")
+                    print(error)
 
-                    Speaker.speak("Sorry bro. Something went wrong.")
+                    Speaker.speak("Sorry bro.")
