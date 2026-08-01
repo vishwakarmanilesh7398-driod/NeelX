@@ -36,3 +36,17 @@ class AIRouter:
             return "search"
 
         return "chat"
+
+        if (
+            "time" in text
+              or "what time" in text
+              or "current time" in text
+         ):
+        return "time"
+
+        if (
+            "date" in text
+              or "today" in text
+              or "what is today's date" in text
+         ):
+         return "date"

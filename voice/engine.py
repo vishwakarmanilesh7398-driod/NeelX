@@ -12,7 +12,7 @@ from voice.speaker import Speaker
 
 from neelx.api import NeelX
 from core.intent.nlp import NLP
-from core.ai.chat import ChatEngine
+from core.ai.brain import Brain
 
 
 class VoiceEngine:
@@ -23,6 +23,7 @@ class VoiceEngine:
         Speaker.speak("Listening")
 
         text = VoiceListener.listen()
+
         print(f"DEBUG: {text}")
 
         if not text:
@@ -32,14 +33,15 @@ class VoiceEngine:
         print(f"\n📝 Recognized : {text}")
 
         # -------------------------
-        # Chat Response
+        # AI Brain
         # -------------------------
 
-        reply = ChatEngine.reply(text)
+        reply = Brain.think(text)
 
         if reply:
+
             Speaker.speak(reply)
-            print(f"🤖 {reply}")
+
             return
 
         # -------------------------
