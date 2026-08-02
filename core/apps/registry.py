@@ -31,6 +31,16 @@ APPS = {
     "youtube": "com.google.android.youtube",
     "yt": "com.google.android.youtube",
 
+
+        # -------------------------
+    # WhatsApp
+    # -------------------------
+
+    "whatsapp": "com.whatsapp",
+    "whats app": "com.whatsapp",
+    "wa": "com.whatsapp",
+    "watsapp": "com.whatsapp",
+
     # -------------------------
     # Instagram
     # -------------------------

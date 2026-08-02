@@ -15,6 +15,10 @@ class AIRouter:
 
         text = text.lower().strip()
 
+        # -------------------------
+        # Calculator
+        # -------------------------
+
         if any(word in text for word in [
             "calculate",
             "plus",
@@ -28,6 +32,10 @@ class AIRouter:
         ]):
             return "calculator"
 
+        # -------------------------
+        # Search
+        # -------------------------
+
         if any(word in text for word in [
             "search",
             "google",
@@ -35,18 +43,31 @@ class AIRouter:
         ]):
             return "search"
 
+        # -------------------------
+        # Time
+        # -------------------------
+
+        if any(word in text for word in [
+            "time",
+            "what time",
+            "current time"
+        ]):
+            return "time"
+
+        # -------------------------
+        # Date
+        # -------------------------
+
+        if any(word in text for word in [
+            "date",
+            "today",
+            "today's date",
+            "what is today's date"
+        ]):
+            return "date"
+
+        # -------------------------
+        # Default
+        # -------------------------
+
         return "chat"
-
-        if (
-            "time" in text
-              or "what time" in text
-              or "current time" in text
-         ):
-        return "time"
-
-        if (
-            "date" in text
-              or "today" in text
-              or "what is today's date" in text
-         ):
-         return "date"

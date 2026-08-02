@@ -3,7 +3,7 @@
 Project : NeelX
 Module  : App Manager
 Author  : Nilesh Vishwakarma
-Version : 1.1.0
+Version : 1.2.0
 =========================================
 """
 
@@ -15,9 +15,23 @@ class AppManager:
     @staticmethod
     def open(package_name: str):
 
-        ADB.shell(
-            f"am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -p {package_name}"
-        )
+        try:
+
+            # Fast & works with most Android apps
+            output = ADB.shell(
+                f"monkey -p {package_name} -c android.intent.category.LAUNCHER 1"
+            )
+
+            print(output)
+
+        except Exception:
+
+            # Fallback
+            output = ADB.shell(
+                f"am start -n {package_name}/.Main"
+            )
+
+            print(output)
 
     @staticmethod
     def close(package_name: str):
