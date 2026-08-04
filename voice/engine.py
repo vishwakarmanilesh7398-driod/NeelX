@@ -13,6 +13,7 @@ from voice.speaker import Speaker
 from neelx.api import NeelX
 from core.intent.nlp import NLP
 from core.ai.brain import Brain
+from core.automation.engine import AutomationEngine
 
 
 class VoiceEngine:
@@ -35,6 +36,27 @@ class VoiceEngine:
         # -------------------------
         # AI Brain
         # -------------------------
+
+                # -------------------------
+        # Automation Processing
+        # -------------------------
+
+        if any(separator in text.lower() for separator in [
+            " and ",
+            " then ",
+            " after that "
+        ]):
+
+            print("⚙️ Automation command detected")
+
+            success = AutomationEngine.run(text)
+
+            if success:
+                Speaker.speak("Automation completed.")
+            else:
+                Speaker.speak("Automation failed.")
+
+            return
 
         reply = Brain.think(text)
 

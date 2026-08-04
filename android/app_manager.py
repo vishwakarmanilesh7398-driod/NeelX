@@ -1,3 +1,4 @@
+
 """
 =========================================
 Project : NeelX
@@ -6,6 +7,8 @@ Author  : Nilesh Vishwakarma
 Version : 1.2.0
 =========================================
 """
+
+from urllib.parse import quote_plus
 
 from android.adb import ADB
 
@@ -19,7 +22,8 @@ class AppManager:
 
             # Fast & works with most Android apps
             output = ADB.shell(
-                f"monkey -p {package_name} -c android.intent.category.LAUNCHER 1"
+                f"monkey -p {package_name} "
+                f"-c android.intent.category.LAUNCHER 1"
             )
 
             print(output)
@@ -41,6 +45,25 @@ class AppManager:
         )
 
     @staticmethod
+    def search_youtube(query: str):
+
+        from urllib.parse import quote_plus
+
+        encoded_query = quote_plus(query)
+
+        print(f"🎬 YouTube Search: {query}")
+
+        # Open YouTube search directly
+        ADB.shell(
+            f'am start '
+            f'-a android.intent.action.SEARCH '
+            f'-p com.google.android.youtube '
+            f'--es query "{encoded_query}"'
+        )
+
+
+
+    @staticmethod
     def is_installed(package_name: str) -> bool:
 
         result = ADB.shell(
@@ -57,3 +80,4 @@ class AppManager:
         )
 
         return result.splitlines()
+

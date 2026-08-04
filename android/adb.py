@@ -3,7 +3,7 @@
 Project : NeelX
 Module  : ADB Wrapper
 Author  : Nilesh Vishwakarma
-Version : 1.0.0
+Version : 1.1.0
 =========================================
 """
 
@@ -68,3 +68,11 @@ class ADB:
         return cls.execute(
             ["adb", "shell", cmd]
         )
+
+    @classmethod
+    def pull(cls, remote_path: str, local_path: str):
+
+        return cls.execute(
+            ["adb", "pull", remote_path, local_path]
+        )
+

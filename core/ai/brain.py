@@ -25,7 +25,7 @@ class Brain:
             return ChatEngine.reply(text)
 
         if route == "search":
-            return Search.google(text)
+            return Search.search(text)
 
         if route == "calculator":
             return Calculator.solve(text)
